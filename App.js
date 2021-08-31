@@ -1,14 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import LoadingScreen from './app/Screens/LoadingScreen';
-
-
+import WelcomeScreen from './app/Screens/WelcomeScreen';
 
 export default function App() {
   return(
     <LoadingScreen/>
+    //<WelcomeScreen/>
   )
 }
-
 
