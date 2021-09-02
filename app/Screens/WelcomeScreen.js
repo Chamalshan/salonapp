@@ -1,26 +1,13 @@
 
 import React from 'react';
-import ReactNative, { ImageBackground,StyleSheet,Image,Text,StatusBar,fontFamily} from 'react-native';
+import ReactNative, { ImageBackground,StyleSheet,Image,Text,StatusBar,fontFamily,TouchableOpacity,Button} from 'react-native';
 import * as Font from 'expo-font';
+import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Login from './LoginScreen';
 
-let customFonts = {
-    'dancing': require('../assets/fonts/dancing.ttf'),
-  };
 
-export default class WelcomeScreen extends React.Component{
-    state = {
-        fontsLoaded: false,
-      };
-      async _loadFontsAsync() {
-        await Font.loadAsync(customFonts);
-        this.setState({ fontsLoaded: true });
-      }
-    
-      componentDidMount() {
-        this._loadFontsAsync();
-      }
-    render(){
-        if (this.state.fontsLoaded) {
+function WelcomeScreen(){
         return (
             <ImageBackground style={styles.container} source={require("../assets/bg-01.png")}>
                 <Image style={styles.girl}
@@ -30,14 +17,17 @@ export default class WelcomeScreen extends React.Component{
                 {'\n'}
                 Hair Style
                 </Text>
-                
+              <TouchableOpacity style={styles.button}
+                onPress={() => navigation.navigate( 'Login' )}>
+                  <Text style={styles.btnTxt}>Get Started</Text>
+              </TouchableOpacity>  
             </ImageBackground>
         );
-      }else {
-        return null;
-      }
-   }
 }
+
+
+export default WelcomeScreen;
+
 
 
 const styles = StyleSheet.create({
@@ -52,7 +42,7 @@ const styles = StyleSheet.create({
         left:'20%',
     },
     text1:{
-        fontFamily:'dancing',
+        fontFamily:'Roboto',
         fontWeight:'bold',
         fontSize:30,
         top:500,
@@ -61,5 +51,30 @@ const styles = StyleSheet.create({
         position:"absolute",
         paddingTop: Platform.OS === 'android'? StatusBar.currentHeight : 0,
         paddingLeft: 10,
+    },
+    btnTxt:{
+      fontSize:20,
+      fontWeight:'500',
+      color:'#ffffff',
+      textAlign:'center'
+    },
+    button:{
+      backgroundColor:'#3A292A',   
+      borderRadius:25,
+      width:200,
+      marginVertical:10,
+      paddingVertical:12,
+      elevation:5,
+      shadowColor:'#000',
+      shadowOffset:{
+        width:1,
+        height:1,
+      },
+      shadowRadius:100,
+      marginVertical:10,
+      marginHorizontal:10,
+      position:'absolute',
+      top:'85%',
+      left:'40%',
     },
 })
