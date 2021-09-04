@@ -12,18 +12,24 @@ import {
   ScrollView
 } from 'react-native';
 
-export default function CustReg() {
+const CustReg=({navigation})=>{
     return (
       <ImageBackground style={styles.container}
         source={require('../assets/bg-01.png')}>
-        
+        <TouchableOpacity>
+          <Image
+            style={{width:28, height:28,position:'absolute',top:"10%",left:"-45%",}}
+            source={require('../assets/back.png')}
+            onPress={() => navigation.navigate("SelectScreen")}
+          />
+        </TouchableOpacity>
         <Text style={styles.header}>Register as Customer</Text>
         <Image
-          style={{width:100, height:110, marginBottom:10}}
-          source={require('../assets/encapture.png')}/>
-        <TextInput style={styles.textinput} placeholder="First Name" 
+          style={{width:105, height:111, marginBottom:10}}
+          source={require('../assets/pic.png')}/>
+        <TextInput style={styles.textinput1} placeholder="First Name" 
         underlineColorAndroid={'transparent'}/>
-        <TextInput style={styles.textinput} placeholder="Last Name" 
+        <TextInput style={styles.textinput2} placeholder="Last Name" 
         underlineColorAndroid={'transparent'}/>
         <TextInput style={styles.textinput} placeholder="Email" 
         underlineColorAndroid={'transparent'}/>
@@ -46,6 +52,8 @@ export default function CustReg() {
     );
   }
 
+export default CustReg;
+
   const styles = StyleSheet.create({
     container: {
       flexGrow: 1,
@@ -64,8 +72,9 @@ export default function CustReg() {
       paddingLeft: 10,
     },
     textinput:{
-      width:300,
+      width:375,
       height:40,
+      top:'-7%',
       backgroundColor:'#fff',
       borderRadius:25,
       paddingHorizontal:16,
@@ -81,6 +90,47 @@ export default function CustReg() {
       marginVertical:10,
       marginHorizontal:10,
     },
+    textinput1:{
+      width:175,
+      height:40,
+      backgroundColor:'#fff',
+      borderRadius:25,
+      paddingHorizontal:16,
+      fontSize:16,
+      color:'#3A292A',
+      top:'0%',
+      left:'-25%',
+      elevation:5,
+      shadowColor:'#000',
+      shadowOffset:{
+        width:1,
+        height:1,
+      },
+      shadowRadius:100,
+      marginVertical:10,
+      marginHorizontal:10,
+    },
+    textinput2:{
+      width:175,
+      height:40,
+      backgroundColor:'#fff',
+      borderRadius:25,
+      paddingHorizontal:16,
+      fontSize:16,
+      color:'#3A292A',
+      top:'-7.3%',
+      left:'25%',
+      elevation:5,
+      shadowColor:'#000',
+      shadowOffset:{
+        width:1,
+        height:1,
+      },
+      shadowRadius:100,
+      marginVertical:10,
+      marginHorizontal:10,
+    },
+
     btnTxt:{
       fontSize:20,
       fontWeight:'500',
@@ -103,7 +153,7 @@ export default function CustReg() {
       marginVertical:10,
       marginHorizontal:10,
       position:'absolute',
-      top:'95%',
+      top:'90%',
       //left:'40%',
     },
 });

@@ -1,14 +1,13 @@
-
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { render } from 'react-dom';
+//import { StatusBar } from 'expo-status-bar';
 import { 
   StyleSheet, 
   Text, 
-  View 
+  View,
+  StatusBar
 } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
-
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import LoadingScreen from './app/Screens/LoadingScreen';
 import Login from "./app/Screens/LoginScreen";
 import WelcomeScreen from './app/Screens/WelcomeScreen';
@@ -16,18 +15,23 @@ import SelectScreen from './app/Screens/SelectScreen';
 import CustReg from './app/Screens/CustReg';
 
 
-export default function App() {
+const AppStack= createStackNavigator();
+
+const App=()=>{
   return (
-    <View style={styles.container}>
-      <StatusBar 
-      backgroundColor="#fff"
-      barStyle="light-content"
-      />
-      <CustReg/>
-      
-    </View>
+    <NavigationContainer>
+      <AppStack.Navigator
+       headerMode="none">
+          <AppStack.Screen name="WelcomeScreen" component={WelcomeScreen}/>
+          <AppStack.Screen name="Login" component={Login}/>
+          <AppStack.Screen name="SelectScreen" component={SelectScreen}/>
+          <AppStack.Screen name="CustReg" component={CustReg}/>
+      </AppStack.Navigator>
+    </NavigationContainer>
   );
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {

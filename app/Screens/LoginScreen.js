@@ -10,10 +10,9 @@ import {
 import Logo from "../Components/Logo";
 import Form from "../Components/Form";
 import react from 'react';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default class Login extends react.Component {
-  render(){
-
+const LoginScreen=({navigation})=>{
     return (
       <ImageBackground style={styles.container} source={require("../assets/bg-01.png")}>
       <View >
@@ -22,14 +21,16 @@ export default class Login extends react.Component {
         <View style={styles.signupTextCont}>
           <Text style={styles.signupText}>Are you a new user?</Text>
           <TouchableOpacity>
-            <Text style={styles.signupBtn}>Sign Up</Text>
+            <Text style={styles.signupBtn}
+            onPress={() => navigation.navigate ("SelectScreen")}>Sign Up</Text>
           </TouchableOpacity>        
         </View>
       </View>
       </ImageBackground>
     );
-  }
 }
+
+export default LoginScreen;
 
   const styles = StyleSheet.create({
     container: {

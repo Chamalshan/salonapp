@@ -9,12 +9,14 @@ import {
 
 import Logo from "../Components/Logo";
 
-export default function Login() {
+
+const SelectScreen=({navigation})=>{
     return (
       <ImageBackground style={styles.container} source={require("../assets/bg-01.png")}>
         <Logo/>
         <View style={styles.signupTextCont}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button}
+            onPress={() => navigation.navigate ("CustReg")}>
               <Text style={styles.btnTxt}>
                   Sign Up as User</Text>
           </TouchableOpacity>
@@ -26,12 +28,15 @@ export default function Login() {
           <View style={styles.signupTextCont}>
             <Text style={styles.signupText}>Already a user?</Text>
               <TouchableOpacity>
-                <Text style={styles.signupBtn}>Login</Text>
+                <Text style={styles.signupBtn}
+                onPress={() => navigation.navigate ("Login")}>Login</Text>
               </TouchableOpacity>        
           </View>
       </ImageBackground>
     );
   }
+
+  export default SelectScreen;
 
   const styles = StyleSheet.create({
     container: {

@@ -1,32 +1,30 @@
 
 import React from 'react';
-import ReactNative, { ImageBackground,StyleSheet,Image,Text,StatusBar,fontFamily,TouchableOpacity,Button} from 'react-native';
+import { ImageBackground,StyleSheet,Image,Text,StatusBar,TouchableOpacity,Button} from 'react-native';
 import * as Font from 'expo-font';
-import { createStackNavigator } from 'react-navigation-stack';
-import { NavigationContainer } from '@react-navigation/native';
 import Login from './LoginScreen';
 
 
-function WelcomeScreen(){
-        return (
-            <ImageBackground style={styles.container} source={require("../assets/bg-01.png")}>
-                <Image style={styles.girl}
-                source={require('../assets/girl.png')}/>
-                <Text style={styles.text1}>
-                Book your favorite 
-                {'\n'}
-                Hair Style
-                </Text>
-              <TouchableOpacity style={styles.button}
-                onPress={() => navigation.navigate( 'Login' )}>
-                  <Text style={styles.btnTxt}>Get Started</Text>
-              </TouchableOpacity>  
-            </ImageBackground>
-        );
+const WelcomeScreen=({navigation})=>{
+    return (
+        <ImageBackground style={styles.container} source={require("../assets/bg-01.png")}>
+            <Image style={styles.girl}
+            source={require('../assets/girl.png')}/>
+            <Text style={styles.text1}>
+            Book your favorite 
+            {'\n'}
+            Hair Style
+            </Text>
+          <TouchableOpacity style={styles.button}
+            onPress={() => navigation.navigate ("Login")}>
+              <Text style={styles.btnTxt}>Get Started</Text>
+          </TouchableOpacity>  
+        </ImageBackground>
+    );
 }
 
-
 export default WelcomeScreen;
+  
 
 
 
@@ -34,6 +32,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'#EFE5DA',
+        paddingTop: Platform.OS === 'android'? StatusBar.currentHeight : 0,
 
     },
     girl:{
